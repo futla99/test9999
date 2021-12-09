@@ -1,0 +1,36 @@
+<?php
+
+$post=file_get_contents("php://input");
+
+$url = "https://star.playback.edge.bamgrid.com/widevine/v1/obtain-license";
+
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+    $headers = [
+      "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36",
+      "Accept: */*",
+      "Accept-Encoding: gzip, deflate, br",
+      "Accept-Language: es-PE,es-419;q=0.9,es;q=0.8,en;q=0.7",
+      "content-type: application/octet-stream",
+"authorization: Bearer eyJ6aXAiOiJERUYiLCJraWQiOiJRVmxCQXpUeFUzMVRtNWVfZTIzams0dFpwRWJpRERteWp6MDNsSS1hRVVBIiwiY3R5IjoiSldUIiwiZW5jIjoiQzIwUCIsImFsZyI6ImRpciJ9..J9DJH-7yl2vh04OV._Hfz5cvdNfyXUC_kh7scPLi1LDsRA120Yeqbv3DFu3Xlc39v9H4Gf0ickE8cay5wzclZYEfU1xCdea6Ssocs6kyjvinW1jbFiAHcK5COwylYRQ7Tvoi6HiJNSBL4SFKcjwbRoo3c-aSp9b4nD8xDFPibaAoo6ZY_U6LSDBU-VnfDiWSRke-AEoadysz-dMN6TBIuIibFabkZ1erfzHt0u7yBYhoMbWhhmWsgZ80l3SQEKMPsE5d05UtennFgC9XPqra3FadRnU1QHweN2a1w93gZXNLFle-IzB1sPBvSlsbqekMUBhzex_NPvjwNIc1po-Kszo0z4g5AZSZ53onWpl_K-SehHZsoIe2jjZSU6bWMcPR1Y-_X9odAMIBED6NBGTRdHF9pHaqqqNAEnVI_RySd7ZotYs3JePcl6xtyGYAfOR0P-FQnwKeke68neR8o6TALDesyOyH4WS32NeBG43Hq-d1TGq5yZvIF2hv-W__CMzSmppcCYHxtUE2XsWDq_OT-TrPpGmzzG5C-4W08CCTF6-5tT_23Ykoz9mbBw24DTmnjAXCA1lwQ-Qsm7Fg26SzTG5Jvjcvcm7qBXDa7D13CgbatySBjvlA68TgwWbTyf4cabegqOR4g0QjQVBoJqPcwk2x6h9DzCwDLiSv6kpeMbdoliQjP1tOlW4H6RpGF5j5cLfEUvpMS1mPpD06eOqDi2y5gRI6GMxUDwTdAq1BnoxI_xw03c9i58QSQyk7jY2hS58bJQv0AuEBWsdhs-IKwwXptsTZH9np2EWnOZsxlFTWEyjFvjIe74rd0ONoFtJhKO-N2pY0P4Cmo-WMLDCc_Nwnfg_g1AKNeMhRbWPDbTlINMTll8ZPt8EWRKoNYvlDR_Rw2SQisiPMQFjLusIbW3P1r8F5OGk7zr1YPaeiIgijdjHmzd10dKiH4XQFig_56WNj617P4oPxIl_yw1W7xuCCe8GvuERAUGhkq0-WxYJH9L_ly1CcQ6qjsGHHw2nuSmwSp5h9WZVSYahSqUVi2GSXz6ITcwZ9flRfO_rmVeevn38KS1A7anEEGRkTEajN1P6ol4OgKqO0uvFRlZx9Ps0DySXStXQHQDiAcLmEJEw4nX6CS72GK6HHpLQrlIl0v5IKK-xHU2Cs4tGCkoB9olBwJhqGsndOEQH3o14jOozr8CsvezM1ToK6ItKmVO-YbKEYUym3xxjHMNeviv6VOewgKCpa1Hw4_9K5H7dsdMe4E1OT8IiuQfZqXqNc7sLmXrpkc6dxwuAgsrYl4NrY6XnqsdC8YjtFsYEG4GbaYZWJkIGYR7E6Sr0K8veTcvHI5MQ6sXOUnUYlf0PjZVy_AkDLq0MhB-Yi9Io77GkMsjO_6mp19CjH1rIZlbWuUYbWr4qqp9bF0MSS-BLscdz5PPQ8gbImv8AWSh8Lu4Ufy24b6hM9ywoBNNVeVyp4XdMDH1L6t0bxLBMUTQsNvatxHZtzCxihhp0TRJJFXyT8aoeIKScpHL7F4E5KBj64ae02hslWsD8nkPyEzJhnjqE6LNUir3riTY5aTqblwLM3tE8XjHeJHPdc65WVNX4CFduZArvdP5XMKirPx9POoOpD2tTZYPyHndYYxrm8x-cVGY896gaxrQS5uMYkJ7ZVdAPHzrf5nSqQAh3WjRO6-thDSo70lwC1fTnG1BmPknei3iPUFqLzSWyTUgTPu6uXyQck-DthmxYgF_YDoCz2ZzTx1iKNtIjAxYHRc0_AJjtZozS3LLLTlAjTyRkQsjTIkVn7p-hxi6sfoTmb7bnACv8ZlxPJehA44NphHjWNZSa_TpoEM0uAbke2twxsk0dpEvG2ahxfPImphxqR5Y7M_UiUYsLDPMOkVQ_5Th5idbnusGQwydA6DVdXGJX6_8rHFkK2nJi2pSLmOnRSv8TbmRxoO_taGLQHUQxkLsGNjmGwSIrqW1_qWatraAIO6vXH76VBWMf0RPdv3ZwFzihcAJCQJNsvds-8lQ9zMJMC-ZxbInRx5tnwdYfBlBeghZSBeuLlUPxPuchGfiLW3KZh9kspZOT8irJZFRZZKmtlyl9YtuiWALow3C9sxHIx_TX3YF8rfBlcRJQvyuvQMH4vDx32NzrrzsiQB1mp-I2WpwNQA9U1GBQmbLt3tcv-gZsGSEwNQS8EZZAD79Rexy-_NnB92x4P3gTLtSkyov2Zsw1sgecU38FkM48AgS-53FdSO4o-r7l7TBK4neRRAwNml4msyezB0SC0uMb65dCL-oIcIlIWzmdM7ySILizr8ejo_BEyPfEp8OWCSk_QX4AHKjlV03Z7jjG4L2OUvoqnScFFVv5HhgOjOy2ac4V-vBE6b7LJN9gV7LIVZ70hJrJgMXmoPIadu_I4OlXTWnZ-FwrztiJxMaEAtNgB1rTDITQuvPWXUoVZDjI8qhneENtg9ZHW4aFk3P7kqVbVGkuSobTbqdz82iVgAdRHW5JXoFukOd2LBd3t5txgYw6M5NmRWP2K3qUY_9HBR4lFE6jMcOFca7U2JWCefa2LzxkyuKDCcEcyRjXI9uts9p49QviJz7joj29lLQTq3gVTqtc2klWADMqkedEORc7V8rt-m4yyOh7bSHUawDOj6FRrDDzu92f4MkxPxabPXDgwJi7iKhtrbfcxmbsGX7VHIlFv55zYDQhKggn6wWneEXykD-HpBvsM3A3bEdeGZ-rytjDQnSrs2nmVTMRPa6iNQY2MukAtWfiH2TGWixzYkGfFX-w.smS0kiXMn6KctYICRUZKlQ",
+"x-application-version: 1.0.0",
+"x-bamsdk-client-id: star-22bcaf0a",
+"x-bamsdk-platform: windows",
+"x-bamsdk-version: 11.0",
+"x-dss-edge-accept: vnd.dss.edge+json; version=1",
+    ];
+ 
+curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($ch, CURLOPT_ENCODING, 'application/json'); //REQUIRED
+
+$html = curl_exec($ch);
+if (curl_errno($ch)) {
+    echo 'Request Error:' . curl_error($ch);
+}
+curl_close($ch);
+echo $html;
